@@ -59,8 +59,6 @@ public class PokemonTableModel extends AbstractTableModel implements TableModelL
 	@Override
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 		Pokemon pokemon = pokemons.get(rowIndex);
-		System.out.println("TO NO setValueAt");
-		System.out.println(columnIndex);
 		switch (columnIndex) {
 			case 0: pokemon.setNumero_da_pokedex((Integer)aValue); break;
 			case 1:	pokemon.setNome((String)aValue); break;
@@ -78,7 +76,6 @@ public class PokemonTableModel extends AbstractTableModel implements TableModelL
 	public void tableChanged(TableModelEvent e) {
 		int i = e.getFirstRow();
 		Pokemon pokemon = pokemons.get(i);
-		System.out.println(pokemon);
 		dao.atualiza(pokemon);		
 	}
 	
