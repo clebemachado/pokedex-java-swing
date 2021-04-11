@@ -7,6 +7,6 @@
 #### O app deve informar aos usuários os erros no cadastros
 
 ## O que falta fazer:
-#### Tela de erro para quando for cadastrar pokemons com mesmo número.
+#### Tela de erro para quando for cadastrar pokemons com mesmo número na pokedex.
 
 ## Para executar o app siga o diretório src>interfaceProgramas>Main.java
