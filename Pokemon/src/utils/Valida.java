@@ -32,9 +32,9 @@ public class Valida implements ActionListener{
 			Integer def = Integer.parseInt(this.defesa.getText());
 			String hab = this.habilidade.getText();
 			
-			PokemonTableModel tmp = new PokemonTableModel();
+			Cadastrar cadast = new Cadastrar();
 			
-			tmp.addPokemons(num, nom, tip, hp, atk, def, hab);
+			cadast.addPokemons(num, nom, tip, hp, atk, def, hab);
 			j.showMessageDialog(null, nom + " adicionado com sucesso");
 			new Limpar(this.frame);
 			
