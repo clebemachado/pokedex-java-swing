@@ -109,10 +109,24 @@ public class PokemonDAO {
 			stmt.execute();
 			stmt.close();
 			JOptionPane j = new JOptionPane();
-			j.showMessageDialog(null, p.getNome() + " atualizado");
-
-			System.out.println(p.getNome() + " atualizado na sua pokedex.");
 		} catch (SQLException u) {
+			throw new RuntimeException(u);
+		}
+	}
+	
+	public void delete(int codigo) {
+		String sql = "delete from pokedex where numero_da_pokedex = ?";
+		JOptionPane j = new JOptionPane();
+
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql); 	
+			stmt.setInt(1, codigo);
+			stmt.execute();
+			stmt.close();
+			j.showMessageDialog(null, "Pokemon deletado");
+			System.out.println("Removido da sua pokedex.");
+		} catch (SQLException u) {
+			System.out.println("TO NO EXCEPTION");
 			throw new RuntimeException(u);
 		}
 	}

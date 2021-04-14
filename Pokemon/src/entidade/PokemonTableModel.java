@@ -1,4 +1,4 @@
- package entidade;
+package entidade;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,12 +19,13 @@ public class PokemonTableModel extends AbstractTableModel implements TableModelL
 		this.dao = dao;
 		this.pokemons = dao.mostrarPokedex();
 		colunas = Arrays.asList("Numero", "Nome", "Tipo", "HP", "ATK", "DFS", "DESCRI");
-		this.addTableModelListener(this);		
+		this.addTableModelListener(this);
 	}
+
 	public PokemonTableModel() {
-		//sobrecarga
+		// sobrecarga
 	}
-	
+
 	public int getRowCount() {
 		return pokemons.size();
 	}
@@ -32,7 +33,7 @@ public class PokemonTableModel extends AbstractTableModel implements TableModelL
 	public int getColumnCount() {
 		return colunas.size();
 	}
-	
+
 	public String getColumnName(int i) {
 		return colunas.get(i);
 	}
@@ -40,13 +41,20 @@ public class PokemonTableModel extends AbstractTableModel implements TableModelL
 	public Object getValueAt(int r, int c) {
 		Pokemon pokemon = pokemons.get(r);
 		switch (c) {
-			case 0:	return pokemon.getNumero_da_pokedex();
-			case 1:	return pokemon.getNome();
-			case 2:	return pokemon.getTipo();
-			case 3:	return pokemon.getHp();
-			case 4:	return pokemon.getAtaque();
-			case 5:	return pokemon.getDefesa();
-			case 6:	return pokemon.getHabilidade();
+		case 0:
+			return pokemon.getNumero_da_pokedex();
+		case 1:
+			return pokemon.getNome();
+		case 2:
+			return pokemon.getTipo();
+		case 3:
+			return pokemon.getHp();
+		case 4:
+			return pokemon.getAtaque();
+		case 5:
+			return pokemon.getDefesa();
+		case 6:
+			return pokemon.getHabilidade();
 		}
 		return null;
 	}
@@ -60,23 +68,50 @@ public class PokemonTableModel extends AbstractTableModel implements TableModelL
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 		Pokemon pokemon = pokemons.get(rowIndex);
 		switch (columnIndex) {
-			case 0: pokemon.setNumero_da_pokedex((Integer)aValue); break;
-			case 1:	pokemon.setNome((String)aValue); break;
-			case 2:	pokemon.setTipo((String)aValue); break;
-			case 3:	pokemon.setHp(Integer.valueOf((String)aValue)); break;
-			case 4:	pokemon.setAtaque(Integer.valueOf((String)aValue)); break;
-			case 5:	pokemon.setDefesa(Integer.valueOf((String)aValue)); break;
-			case 6:	pokemon.setHabilidade((String)aValue); break;
+		case 0:
+			pokemon.setNumero_da_pokedex((Integer) aValue);
+			break;
+		case 1:
+			pokemon.setNome((String) aValue);
+			break;
+		case 2:
+			pokemon.setTipo((String) aValue);
+			break;
+		case 3:
+			pokemon.setHp(Integer.valueOf((String) aValue));
+			break;
+		case 4:
+			pokemon.setAtaque(Integer.valueOf((String) aValue));
+			break;
+		case 5:
+			pokemon.setDefesa(Integer.valueOf((String) aValue));
+			break;
+		case 6:
+			pokemon.setHabilidade((String) aValue);
+			break;
 		}
 		fireTableCellUpdated(rowIndex, columnIndex);
-		
+
 	}
 
 	@Override
 	public void tableChanged(TableModelEvent e) {
 		int i = e.getFirstRow();
 		Pokemon pokemon = pokemons.get(i);
-		dao.atualiza(pokemon);		
-	}	
+		dao.atualiza(pokemon);
+	}
+
+	public void deletarPokemon(Integer numero) throws Exception {
+	
+		for (Pokemon pok: pokemons) {
+            if (pok.getNumero_da_pokedex().equals(numero)) {
+                pokemons.remove(pok);
+                break;
+            }
+		}
+		dao.delete(numero);
+		fireTableDataChanged();
+	}
+	
 
 }

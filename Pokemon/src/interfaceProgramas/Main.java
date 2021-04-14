@@ -5,6 +5,7 @@ package interfaceProgramas;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import utils.Finaliza;
@@ -75,6 +76,7 @@ public class Main extends JFrame {
 		btCadastrar.addActionListener(new Valida(txtNumero, txtNome, txtTipo, txtHp, 
 																txtAtk,txtDef, txtHab, this));
 		
+	
 		JButton btPokedex = new JButton("Pokedex");
 		btPokedex.setBounds(130, 115, 95, 30);
 		btPokedex.addActionListener(new Mostrar());
