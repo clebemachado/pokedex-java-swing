@@ -4,6 +4,7 @@
 #### O app deve cadastrar novos pokemons em um banco de dados
 #### O app deve listar os pokemons cadastrados
 #### O app deve editar os pokemons cadastrados
+#### O app deve excluir os pokemons cadastrados
 #### O app deve informar aos usuários os erros no cadastros
 
 ## O que falta fazer:
